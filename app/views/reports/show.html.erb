@@ -24,10 +24,10 @@
 			<% @report.items.each do |item| %>
 			  <tr>
 			    <td><%= item.product_name %></td>
-			    <td>$<%= item.price %></td>
+			    <td>$ <%= item.price %></td>
 			    <td><%= item.quantity %></td>
-			    <td><%= item.created_at %></td>
-			    <td> --- </td>
+			    <td><%= item.created_at.strftime("%F") if item.created_at %></td>
+			    <td>$ <%= item.price*item.quantity %></td>
 			  </tr>
 			<% end %>
 		</table>
