@@ -1,9 +1,11 @@
 class ReportsController < ApplicationController
 	skip_before_action :verify_authenticity_token
 	
-	
 	def show
 		@report = Report.find(params[:id])
+		@price = @report.items.sum(:price)
+		@quantity = @report.items.sum(:quantity)
+		@total = @price * @quantity
 	end
 
 	def new

@@ -12,8 +12,25 @@
 		<br>
 		<button type="submit">Add Item</button>
 	</form>
-
-	<% @report.items.each do |item| %>
-	<%= item.product_name %>
-	<% end %>
+	<div class="table-responsive">
+		<table class="table">
+		  <tr>
+		    <th>Product</th>
+		    <th>Price</th>
+		    <th>Quantity</th>
+		    <th>Date</th>
+		    <th>Total</th>
+		  </tr>
+			<% @report.items.each do |item| %>
+			  <tr>
+			    <td><%= item.product_name %></td>
+			    <td>$<%= item.price %></td>
+			    <td><%= item.quantity %></td>
+			    <td><%= item.created_at %></td>
+			    <td> --- </td>
+			  </tr>
+			<% end %>
+		</table>
+	</div>
+	<h2>Total: $<%= @total %></h2>
 </div>
