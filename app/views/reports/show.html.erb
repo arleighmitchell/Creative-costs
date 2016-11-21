@@ -1,5 +1,7 @@
 <h2><%= @report.name %></h2>
+
 <div class="item_add">	
+<% if current_user && current_user.admin == false %>
 	<form action="/item-add" method="post">
 		<label class="label" for="product_name">Product</label><br>
 		<input type="text" name="product_name"><br>
@@ -12,6 +14,7 @@
 		<br>
 		<button type="submit">Add Item</button>
 	</form>
+<% end %>
 	<div class="table-responsive">
 		<table class="table">
 		  <tr>
@@ -26,14 +29,16 @@
 			    <td><%= item.product_name %></td>
 			    <td>$ <%= item.price %></td>
 			    <td><%= item.quantity %>
-				    <form method="post" action="/add-one">
-						<input type="hidden" name="item_id" value="<%= item.id %>">
-						<button class="btn btn-default btn-xs" type="submit">+</button>
-					</form>
-					 <form method="post" action="/subtract-one">
-						<input type="hidden" name="item_id" value="<%= item.id %>">
-						<button class="btn btn-default btn-xs" type="submit">-</button>
-					</form>
+			    	<% if current_user && current_user.admin == false %>
+					    <form method="post" action="/add-one">
+							<input type="hidden" name="item_id" value="<%= item.id %>">
+							<button class="btn btn-default btn-xs" type="submit">+</button>
+						</form>
+						 <form method="post" action="/subtract-one">
+							<input type="hidden" name="item_id" value="<%= item.id %>">
+							<button class="btn btn-default btn-xs" type="submit">-</button>
+						</form>
+					<% end %>
 				</td>
 			    <td><%= item.created_at.strftime("%F") if item.created_at %></td>
 			    <td>$ <%= item.price*item.quantity %></td>
@@ -43,4 +48,5 @@
 		</table>
 	</div>
 		<h3>Total: $ <%= @totals.sum %></h3>
+		<h4><%= link_to "Back", :back %></h4>
 </div>

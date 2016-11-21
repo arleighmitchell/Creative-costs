@@ -1,5 +1,7 @@
 source 'http://rubygems.org'
 
+gem 'table_print'
+
 gem 'rails', '4.2.7.1'
 
 gem 'sqlite3'

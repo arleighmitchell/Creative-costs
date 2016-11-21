@@ -3,12 +3,11 @@
 <% end %>
 <% if current_user && current_user.admin == true %>
 	<h3>Administrator</h3>
+	
 <% end %>
 
-<h3>Your Reports: </h3>
-
-<% if current_user %>
-
+<% if current_user && current_user.admin == false %>
+	<h3>Your Reports: </h3>
 	<% @reports.each do |report| %>
 		<h4><%= link_to report.name, report %>, 
 			<form method="post" action="/delete-report">
@@ -16,6 +15,13 @@
 					<button class="btn btn-default btn-sm" type="submit">Delete Report</button>
 			</form>
 		</h4><br>
+	<% end %>
+
+<% end %>
+
+<% if current_user && current_user.admin == true %>
+	<% @users.each do |user| %>
+		<h4><%= link_to user.fname, teacher_path(user.id) %></h4><br>
 	<% end %>
 
 <% end %>

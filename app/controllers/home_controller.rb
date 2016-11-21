@@ -3,7 +3,8 @@ class HomeController < ApplicationController
 
   def index
   	if current_user
-  	@reports = current_user.reports.reverse
+  	 @reports = current_user.reports.reverse
+     @users = User.all
   	end
   end
   def delete_report
@@ -12,4 +13,5 @@ class HomeController < ApplicationController
 
   	redirect_to '/'
   end
+
 end

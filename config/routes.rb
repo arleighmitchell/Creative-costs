@@ -14,5 +14,6 @@ Rails.application.routes.draw do
 
   post '/subtract-one' => 'reports#subtract_one'
 
-  resources :reports
+  resources :reports, :teachers
+  
 end
