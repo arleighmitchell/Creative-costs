@@ -30,7 +30,10 @@
     <%= f.label :password_confirmation %><br />
     <%= f.password_field :password_confirmation, autocomplete: "off" %>
   </div>
-
+  <div>
+    <%= f.label :check_if_you_are_an_administrator %>
+    <%= f.check_box :admin, {}, "true", "false"  %>
+  </div>
   <div class="actions">
     <%= f.submit "Sign up" %>
   </div>

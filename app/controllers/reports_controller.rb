@@ -5,7 +5,13 @@ class ReportsController < ApplicationController
 		@report = Report.find(params[:id])
 		@price = @report.items.sum(:price)
 		@quantity = @report.items.sum(:quantity)
-		@total = @price * @quantity
+		@total = @price + @quantity
+
+		@totals = []
+
+		@report.items.each do |item|
+			@totals << item.price * item.quantity
+		end
 	end
 
 	def new
@@ -22,7 +28,7 @@ class ReportsController < ApplicationController
 					name:   name
 					)
 
-		redirect_to new_report_path
+		redirect_to report_path
 	end
 
 	def item_add

@@ -1,8 +1,21 @@
 <% if current_user %>
 	<h2>Welcome <%= current_user.fname%></h2>
 <% end %>
+<% if current_user && current_user.admin == true %>
+	<h3>Administrator</h3>
+<% end %>
 <h3>Create a New Report or Add to an Existing Report Here <a href="/report_new">+</a></h3>
 <h6>Reports: </h6>
-<% @reports.each do |report| %>
-<li><%= link_to report.name, report %></li>
+
+<% if current_user %>
+
+	<% @reports.each do |report| %>
+		<li><%= link_to report.name, report %>, 
+			<form method="post" action="/delete-report">
+					<input type="hidden" name="report_id" value="<%= report.id %>"><br>
+					<button type="submit">Delete Report</button>
+			</form>
+		</li>
+	<% end %>
+
 <% end %>
