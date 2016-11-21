@@ -46,5 +46,19 @@ class ReportsController < ApplicationController
 
     	redirect_to :back
 	end
+	def add_one
+		item = Item.find(params["item_id"])
+		item.quantity += 1
+		item.save
+
+  		redirect_to :back
+	end
+	def subtract_one
+		item = Item.find(params["item_id"])
+		item.quantity -= 1
+		item.save
+
+  		redirect_to :back
+	end
 
 end

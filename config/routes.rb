@@ -10,5 +10,9 @@ Rails.application.routes.draw do
 
   post '/delete-report' => 'home#delete_report'
 
+  post '/add-one' => 'reports#add_one'
+
+  post '/subtract-one' => 'reports#subtract_one'
+
   resources :reports
 end

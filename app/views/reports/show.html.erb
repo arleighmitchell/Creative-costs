@@ -25,12 +25,22 @@
 			  <tr>
 			    <td><%= item.product_name %></td>
 			    <td>$ <%= item.price %></td>
-			    <td><%= item.quantity %></td>
+			    <td><%= item.quantity %>
+				    <form method="post" action="/add-one">
+						<input type="hidden" name="item_id" value="<%= item.id %>">
+						<button class="btn btn-default btn-xs" type="submit">+</button>
+					</form>
+					 <form method="post" action="/subtract-one">
+						<input type="hidden" name="item_id" value="<%= item.id %>">
+						<button class="btn btn-default btn-xs" type="submit">-</button>
+					</form>
+				</td>
 			    <td><%= item.created_at.strftime("%F") if item.created_at %></td>
 			    <td>$ <%= item.price*item.quantity %></td>
 			  </tr>
+			
 			<% end %>
 		</table>
 	</div>
-		<%= @totals.sum %>
+		<h3>Total: $ <%= @totals.sum %></h3>
 </div>
