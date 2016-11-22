@@ -1,3 +1,4 @@
+<div class="item_add">
 <% @reports.each do |report| %>
 	<h4><%= link_to report.name, report %>, 
 		<form method="post" action="/delete-report">
@@ -6,3 +7,4 @@
 		</form>
 	</h4><br>
 <% end %>
+</div>

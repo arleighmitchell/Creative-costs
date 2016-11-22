@@ -1,24 +1,74 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
+
 body{
-	padding: 50px;
-	background: lightgrey;
+	background: #C5A982;
+
 }
+
+.decor{
+	max-height: 260px;
+	padding:50px, 0px, 0px, 0px;
+}
+
 .landing{
-	background-image: url("images/arleigh-mitchell4.jpg");
+	background-image: url("images/arleigh-mitchell5.jpg");
 	background-size: cover;
 	text-align: center;
 }
-.login{
-	margin-top: 10%;
-	margin-right: 100px;
-	margin-left: 100px;
-	font-size: 60px;
-	color: white;
+
+.log-in{
+	margin-top: 25%;
+	margin-right: 125px;
+	margin-left: 125px;
+	font-size: 50px;
+	color: #DEB886;
 	background: rgba(0, 0, 0, 0.5);
 	border-radius: 15px;
+	font-family: monospace;
 }
+
 p {
 	font-size: 30px;
 	padding: 15px;
+}
+
+.navbar {
+	padding: 10px;
+	font-size: 20px;
+	background: #325652;
+}
+
+.body{
+	padding: 20px;
+}
+
+.item_add {
+	padding: 65px;
+}
+
+input{
+	border-radius: 15px;
+	border-width: 0px;
+}
+
+.label{
+	font-size: 15px;
+	color: black;
+}
+
+.form{
+	float: left;
+	margin-right: 15px;
+}
+
+th{
+	font-size: 20px;
+}
+
+td{
+	font-size: 16px;
+}
+.devise{
+	margin: auto;
 }

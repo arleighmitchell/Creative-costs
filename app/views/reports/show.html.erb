@@ -1,21 +1,17 @@
-<%= link_to 'print', 'your_link_here', :onclick => 'window.print();return false;'%><h2><%= @report.name %></h2>
-
 <div class="item_add">	
-<% if current_user && current_user.admin == false %>
-	<form action="/item-add" method="post">
-		<label class="label" for="product_name">Product</label><br>
-		<input type="text" name="product_name"><br>
-		<label class="label" for="price">Price</label><br>
-		<input type="text" name="price"><br>
-		<label class="label" for="quantity">Quantity</label><br>
-		<input type="text" name="quantity"><br>
-		<input type="hidden" name="report_id" value="<%= @report.id %>">
-		<br>
-		<br>
-		<button type="submit">Add Item</button>
-	</form>
-	
-<% end %>
+	<h2><%= @report.name %></h2>
+	<% if current_user && current_user.admin == false %>
+		<form action="/item-add" method="post">
+			<label class="label" for="product_name">Product</label><br>
+			<input type="text" name="product_name"><br>
+			<label class="label" for="price">Price</label><br>
+			<input type="text" name="price"><br>
+			<label class="label" for="quantity">Quantity</label><br>
+			<input type="text" name="quantity"><br>
+			<input type="hidden" name="report_id" value="<%= @report.id %>"><br>
+			<button class="btn btn-default btn-sm" type="submit">Add Item</button>
+		</form><br><br>
+	<% end %>
 	<div class="table-responsive">
 		<table class="table">
 		  <tr>
@@ -25,36 +21,37 @@
 		    <th>Date</th>
 		    <th>Total</th>
 		  </tr>
-			<% @report.items.each do |item| %>
-			  <tr>
-			    <td><%= item.product_name %></td>
-			    <td>$ <%= item.price %></td>
-			    <td><%= item.quantity %>
-			    	<% if current_user && current_user.admin == false %>
-					    <form method="post" action="/add-one">
-							<input type="hidden" name="item_id" value="<%= item.id %>">
-							<button class="btn btn-default btn-xs" type="submit">+</button>
-						</form>
-						 <form method="post" action="/subtract-one">
-							<input type="hidden" name="item_id" value="<%= item.id %>">
-							<button class="btn btn-default btn-xs" type="submit">-</button>
-						</form>
-					<% end %>
-				</td>
-			    <td><%= item.created_at.strftime("%F") if item.created_at %></td>
-			    <td>$ <%= item.price*item.quantity %></td>
-			  </tr>
-			
-			<% end %>
+		  <% @report.items.each do |item| %>
+		  <tr>
+		    <td><%= item.product_name %></td>
+		    <td>$ <%= item.price %></td>
+		    <td><%= item.quantity %>
+		    	<% if current_user && current_user.admin == false %>
+				<div class="forms">
+				    <form class="form" method="post" action="/add-one">
+						<input type="hidden" name="item_id" value="<%= item.id %>">
+						<button class="btn btn-default btn-xs" type="submit">+</button>
+					</form>
+					<form class="form" method="post" action="/subtract-one">
+						<input type="hidden" name="item_id" value="<%= item.id %>">
+						<button class="btn btn-default btn-xs" type="submit">-</button>
+					</form>
+				</div>
+				<% end %>
+			</td>
+		    <td><%= item.created_at.strftime("%F") if item.created_at %></td>
+		    <td>$ <%= item.price*item.quantity %></td>
+		  </tr>
+		  <% end %>
 		</table>
 	</div>
-	<h3>Total: $ <%= @totals.sum %></h3>
+	<h3>Total: $ <%= @totals.sum %></h3><br>
+	<h4><%= link_to 'print', 'your_link_here', :onclick => 'window.print();return false;'%></h4> 
+	<% if current_user && current_user.admin == true %>
+		<h4> | <%= link_to "Back", :back %></h4>
+	<% end %><br>
 	<form method="post" action="/delete-report">
 		<input type="hidden" name="report_id" value="<%= @report.id %>">
-		<button class="btn btn-default btn-sm" type="submit">Delete Report</button>
+		<br><button class="btn btn-default btn-sm" type="submit">Delete Report</button>
 	</form>
-
-	<% if current_user && current_user.admin == true %>
-		<h4><%= link_to "Back", :back %></h4>
-	<% end %>
 </div>
