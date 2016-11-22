@@ -4,8 +4,6 @@ gem 'table_print'
 
 gem 'rails', '4.2.7.1'
 
-
-
 gem 'bootstrap-sass', '~> 3.3.6'
 
 gem 'sass-rails', '~> 5.0'
