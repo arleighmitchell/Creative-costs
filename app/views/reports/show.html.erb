@@ -7,10 +7,10 @@
 		<form action="/item-add" method="post">
 			<label class="label" for="product_name">Product</label><br>
 			<input type="text" name="product_name"><br>
-			<label class="label" for="price">Price</label><br>
-			<input type="text" name="price"><br>
 			<label class="label" for="quantity">Quantity</label><br>
 			<input type="text" name="quantity"><br>
+			<label class="label" for="price">Price</label><br>
+			<input type="text" name="price"><br>
 			<input type="hidden" name="report_id" value="<%= @report.id %>"><br>
 			<button class="btn btn-default btn-sm" type="submit">Add Item</button>
 		</form><br><br>

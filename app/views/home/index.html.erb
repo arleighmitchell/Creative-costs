@@ -29,7 +29,7 @@
 		<% end %>
 
 		<% if current_user && current_user.admin == true %>
-			<% @users.sort_by(&:fname).each do |user| %>
+			<% @users.sort_by(&:lname).each do |user| %>
 				<h4><%= link_to user.full_name, teacher_path(user.id) %></h4><br>
 			<% end %>
 
