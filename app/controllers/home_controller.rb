@@ -7,11 +7,5 @@ class HomeController < ApplicationController
      @users = User.all
   	end
   end
-  def delete_report
-  	@report = Report.find(params["report_id"])
-  	@report.destroy
-
-  	redirect_to '/'
-  end
 
 end

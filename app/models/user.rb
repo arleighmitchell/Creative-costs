@@ -5,4 +5,7 @@ class User < ActiveRecord::Base
 
   has_many :reports
   
+  def full_name
+  	[fname, lname].join(" ")
+  end
 end

@@ -8,7 +8,7 @@ Rails.application.routes.draw do
 
   post '/item-add' => "reports#item_add"
 
-  post '/delete-report' => 'home#delete_report'
+  post '/delete-report' => 'reports#delete_report'
 
   post '/add-one' => 'reports#add_one'
 
