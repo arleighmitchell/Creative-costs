@@ -1,10 +1,8 @@
-<div class="item_add">
+<img src="../assets/images/arleigh-mitchell6.jpg">
+
+<div class="body">
+<h2><%= @teacher.full_name %></h2>
 <% @reports.each do |report| %>
-	<h4><%= link_to report.name, report %>, 
-		<form method="post" action="/delete-report">
-				<input type="hidden" name="report_id" value="<%= report.id %>">
-				<button class="btn btn-default btn-sm" type="submit">Delete Report</button>
-		</form>
-	</h4><br>
+	<h4><%= link_to report.name, report %></h4><br>
 <% end %>
 </div>

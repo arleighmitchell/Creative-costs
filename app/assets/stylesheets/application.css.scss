@@ -2,13 +2,13 @@
 @import "bootstrap";
 
 body{
-	background: #C5A982;
+	background: #BA9F78;
 
 }
+img {
+	padding-top: 6%;
+	max-width: 100%;
 
-.decor{
-	max-height: 260px;
-	padding:50px, 0px, 0px, 0px;
 }
 
 .landing{
@@ -40,7 +40,7 @@ p {
 }
 
 .body{
-	padding: 20px;
+	padding-left: 50px;
 }
 
 .item_add {
@@ -70,5 +70,9 @@ td{
 	font-size: 16px;
 }
 .devise{
-	margin: auto;
+	background: #3B635B;
+}
+.sup{
+	max-width: 100%;
+	padding-top: 0px;
 }

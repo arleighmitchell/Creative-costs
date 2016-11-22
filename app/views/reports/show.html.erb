@@ -1,5 +1,8 @@
 <div class="item_add">	
 	<h2><%= @report.name %></h2>
+	<% if current_user && current_user.admin == true %>
+		<h4><%= @report.user.full_name %></h4>
+	<% end %>
 	<% if current_user && current_user.admin == false %>
 		<form action="/item-add" method="post">
 			<label class="label" for="product_name">Product</label><br>
@@ -46,12 +49,14 @@
 		</table>
 	</div>
 	<h3>Total: $ <%= @totals.sum %></h3><br>
-	<h4><%= link_to 'print', 'your_link_here', :onclick => 'window.print();return false;'%></h4> 
+	<h4><%= link_to 'Print', 'your_link_here', :onclick => 'window.print();return false;'%> 
 	<% if current_user && current_user.admin == true %>
-		<h4> | <%= link_to "Back", :back %></h4>
+		 | <%= link_to "Back", :back %></h4>
 	<% end %><br>
+	<% if current_user && current_user.admin == false %>
 	<form method="post" action="/delete-report">
 		<input type="hidden" name="report_id" value="<%= @report.id %>">
 		<br><button class="btn btn-default btn-sm" type="submit">Delete Report</button>
 	</form>
+	<% end %>
 </div>
